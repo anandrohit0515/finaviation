@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinAviation — Finance & Aviation Intelligence</title>
+  <meta name="description" content="FinAviation delivers rigorous, independent analysis at the intersection of personal finance and aviation — from private jet ownership costs to aviation investing."/>
+  <link rel="canonical" href="https://finaviation.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0f0e0c; --parchment: #f7f3ed; --cream: #faf8f4;
+      --gold: #b8860b; --gold-light: #d4a017; --muted: #6b6560;
+      --rule: #ddd8d0; --accent-bg: #1a1714;
+    }
+    body { background: var(--cream); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-weight: 300; line-height: 1.85; font-size: 18px; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ══ NAV ══ */
+    nav {
+      background: var(--accent-bg);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 60px;
+      border-bottom: 1px solid rgba(184,134,11,0.2);
+      position: sticky; top: 0; z-index: 200;
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #f0ece4; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--gold-light); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a8278; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+    .nav-cta { background: var(--gold); color: #0f0e0c !important; padding: 7px 18px; border-radius: 2px; font-weight: 600 !important; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; color: #0f0e0c !important; }
+
+    /* ══ HERO ══ */
+    .hero {
+      position: relative; height: 92vh; min-height: 580px; max-height: 820px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1600&q=85&fit=crop');
+      background-size: cover; background-position: center 40%;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(15,14,12,0.96) 0%, rgba(15,14,12,0.55) 45%, rgba(15,14,12,0.15) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      padding: 0 40px 72px;
+    }
+    .hero-kicker { font-size: 10px; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 18px; display: block; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 700; line-height: 1.1;
+      color: #f0ece4; max-width: 720px; margin-bottom: 20px;
+    }
+    .hero-desc { font-size: 1.1rem; color: #9a9288; max-width: 520px; margin-bottom: 32px; line-height: 1.75; }
+    .hero-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .hero-tag { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(184,134,11,0.4); padding: 5px 12px; border-radius: 2px; }
+    .hero-date { font-size: 12px; color: #6a6460; letter-spacing: 0.1em; }
+    .hero-read-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: #0f0e0c;
+      font-family: 'Source Serif 4', serif; font-size: 11px;
+      font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 12px 28px; border-radius: 2px; transition: background 0.2s, transform 0.15s;
+    }
+    .hero-read-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .hero-scroll {
+      position: absolute; bottom: 28px; right: 40px; z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: #4a4540; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(184,134,11,0.6), transparent); }
+
+    /* ══ AD SLOTS ══ */
+    .ad-slot {
+      background: #f0ede8; border: 1px dashed #c8c0b0; border-radius: 4px;
+      text-align: center; padding: 16px 12px; color: #9a9088;
+      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; position: relative;
+    }
+    .ad-slot::before { content: 'Advertisement'; display: block; font-size: 10px; letter-spacing: 0.2em; color: #b8b0a8; margin-bottom: 6px; }
+    .ad-slot .ad-size { font-size: 12px; color: #b0a898; font-style: italic; font-family: 'Source Serif 4', serif; }
+    .ad-slot code { font-size: 9px; color: #c0b8b0; margin-top: 4px; display: block; }
+
+    /* ══ SECTION HEADERS ══ */
+    .section-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 32px;
+    }
+    .section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); }
+    .section-header a { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); transition: color 0.2s; }
+    .section-header a:hover { color: var(--gold-light); }
+
+    /* ══ MAIN CONTENT LAYOUT ══ */
+    .content-wrap { max-width: 1100px; margin: 0 auto; padding: 64px 40px; }
+    .content-grid { display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: start; }
+
+    /* ══ ARTICLE CARDS ══ */
+    .articles-list { display: flex; flex-direction: column; gap: 0; }
+
+    /* Featured card */
+    .card-featured {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border: 1px solid var(--rule); border-radius: 4px;
+      overflow: hidden; margin-bottom: 40px;
+      transition: box-shadow 0.2s;
+    }
+    .card-featured:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .card-featured-img { height: 280px; object-fit: cover; display: block; width: 100%; }
+    .card-featured-body { padding: 32px 28px; display: flex; flex-direction: column; justify-content: center; background: white; }
+    .card-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+    .card-featured-body h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: 12px; }
+    .card-featured-body h3 a:hover { color: var(--gold); }
+    .card-featured-body p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+    .card-meta { font-size: 11px; color: #aaa8a0; letter-spacing: 0.08em; }
+
+    /* Standard article row */
+    .card-row {
+      display: grid; grid-template-columns: 140px 1fr;
+      gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--rule);
+      transition: opacity 0.2s;
+    }
+    .card-row:last-child { border-bottom: none; }
+    .card-row:hover { opacity: 0.82; }
+    .card-row-img { width: 140px; height: 96px; object-fit: cover; border-radius: 3px; display: block; flex-shrink: 0; }
+    .card-row-body { display: flex; flex-direction: column; justify-content: center; }
+    .card-row-body h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; line-height: 1.35; color: var(--ink); margin-bottom: 6px; }
+    .card-row-body h3 a:hover { color: var(--gold); }
+    .card-row-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+    .card-row-meta { font-size: 11px; color: #aaa8a0; }
+
+    /* ══ CATEGORIES ══ */
+    .categories-section { background: var(--accent-bg); padding: 64px 40px; margin: 0; }
+    .categories-inner { max-width: 1100px; margin: 0 auto; }
+    .categories-section .section-header { border-bottom-color: rgba(255,255,255,0.1); }
+    .categories-section .section-header h2 { color: #f0ece4; }
+    .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .cat-card {
+      position: relative; border-radius: 3px; overflow: hidden;
+      height: 180px; cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .cat-card:hover { transform: translateY(-3px); }
+    .cat-card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .cat-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,14,12,0.88) 0%, rgba(15,14,12,0.3) 100%); }
+    .cat-card-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; }
+    .cat-icon { font-size: 1.4rem; display: block; margin-bottom: 6px; }
+    .cat-card-content h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #f0ece4; margin-bottom: 4px; }
+    .cat-card-content span { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); }
+
+    /* ══ SIDEBAR ══ */
+    .sidebar { position: sticky; top: 80px; }
+    .sidebar-widget { margin-bottom: 36px; }
+    .sidebar-widget-title { font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 16px; }
+    .sidebar-ad { background: #f0ede8; border: 1px dashed #c8c0b0; border-radius: 4px; text-align: center; padding: 16px 8px; color: #9a9088; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; min-height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 36px; }
+    .sidebar-ad::before { content: 'Advertisement'; display: block; font-size: 10px; letter-spacing: 0.2em; color: #b8b0a8; }
+    .sidebar-ad .ad-size { font-size: 12px; color: #b0a898; font-style: italic; }
+    .sidebar-ad code { font-size: 9px; color: #c0b8b0; }
+
+    /* Trending */
+    .trending-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule); align-items: flex-start; }
+    .trending-item:last-child { border-bottom: none; }
+    .trending-num { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--rule); font-weight: 700; flex-shrink: 0; line-height: 1; padding-top: 4px; }
+    .trending-title { font-family: 'Playfair Display', serif; font-size: 0.92rem; font-weight: 700; color: var(--ink); line-height: 1.35; }
+    .trending-title a:hover { color: var(--gold); }
+    .trending-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-top: 4px; display: block; }
+
+    /* ══ NEWSLETTER ══ */
+    .newsletter-section {
+      background: var(--parchment); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      padding: 72px 40px; text-align: center;
+    }
+    .newsletter-inner { max-width: 520px; margin: 0 auto; }
+    .newsletter-section .kicker { font-size: 10px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+    .newsletter-section h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--ink); margin-bottom: 14px; }
+    .newsletter-section p { font-size: 0.97rem; color: var(--muted); margin-bottom: 32px; line-height: 1.7; }
+    .newsletter-form { display: flex; gap: 0; border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; max-width: 420px; margin: 0 auto 12px; }
+    .newsletter-input { flex: 1; border: none; outline: none; padding: 13px 18px; font-family: 'Source Serif 4', serif; font-size: 0.95rem; color: var(--ink); background: white; font-weight: 300; }
+    .newsletter-input::placeholder { color: #b0a898; }
+    .newsletter-btn { background: var(--gold); border: none; padding: 13px 22px; font-family: 'Source Serif 4', serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #0f0e0c; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .newsletter-btn:hover { background: var(--gold-light); }
+    .newsletter-note { font-size: 11px; color: #b0a898; }
+    .newsletter-success { display: none; background: rgba(184,134,11,0.1); border: 1px solid rgba(184,134,11,0.3); border-radius: 3px; padding: 12px 20px; color: var(--gold); font-size: 0.95rem; margin-top: 12px; }
+
+    /* ══ STATS BAR ══ */
+    .stats-bar { background: var(--accent-bg); padding: 36px 40px; }
+    .stats-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; gap: 72px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold-light); display: block; }
+    .stat-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #5a5550; margin-top: 4px; }
+
+    /* ══ FOOTER ══ */
+    footer { background: var(--accent-bg); border-top: 1px solid rgba(184,134,11,0.15); color: #6e6560; text-align: center; padding: 40px 24px; font-size: 12px; letter-spacing: 0.08em; }
+    footer span { color: var(--gold); }
+    footer a { color: var(--gold-light); text-decoration: none; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #f0ece4; margin-bottom: 20px; display: block; }
+    .footer-logo span { color: var(--gold-light); }
+    .footer-nav { display: flex; justify-content: center; gap: 28px; margin-bottom: 20px; flex-wrap: wrap; }
+    .footer-nav a { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6e6560; }
+    .footer-nav a:hover { color: var(--gold-light); }
+    .footer-tagline { font-style: italic; font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #3a3530; margin-bottom: 20px; }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 900px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .card-featured { grid-template-columns: 1fr; }
+      .card-featured-img { height: 220px; }
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .content-wrap { padding: 48px 20px; }
+      .categories-section { padding: 48px 20px; }
+      .stats-inner { gap: 40px; }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .hero-content { padding: 0 20px 48px; }
+      .cat-grid { grid-template-columns: 1fr 1fr; }
+      .card-row { grid-template-columns: 100px 1fr; gap: 14px; }
+      .card-row-img { width: 100px; height: 76px; }
+      .nav-links { display: none; }
+      .newsletter-form { flex-direction: column; }
+      .stats-inner { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="https://finaviation.com" class="nav-logo">Fin<span>Aviation</span></a>
+  <ul class="nav-links">
+    <li><a href="https://finaviation.com" class="active">Home</a></li>
+    <li><a href="https://finaviation.com/about">About</a></li>
+    <li><a href="https://finaviation.com/articles">Articles</a></li>
+    <li><a href="https://finaviation.com/contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-kicker">Featured Article</span>
+    <h1>The True Cost of Owning a Private Jet</h1>
+    <p class="hero-desc">Beyond the sticker price — a rigorous breakdown of acquisition, fixed costs, fuel, maintenance, and the real all-in numbers serious buyers need to know.</p>
+    <div class="hero-meta">
+      <a href="https://finaviation.com/private-jet-ownership-cost" class="hero-read-btn">Read Article →</a>
+      <span class="hero-tag">Aircraft Ownership</span>
+      <span class="hero-date">March 11, 2026 &nbsp;·&nbsp; 9 min read</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══ TOP LEADERBOARD AD ══ -->
+<div style="max-width:800px; margin:0 auto; padding:24px 40px 0;">
+  <div class="ad-slot" style="min-height:96px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <div class="ad-size">Google AdSense — Leaderboard 728 × 90</div>
+    <code>&lt;ins class="adsbygoogle" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXX" data-ad-format="auto"&gt;&lt;/ins&gt;</code>
+  </div>
+</div>
+
+<!-- ══ STATS BAR ══ -->
+<div class="stats-bar" style="margin-top:32px;">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-number">$75M+</span><div class="stat-label">Top jet list price covered</div></div>
+    <div class="stat"><span class="stat-number">$2.5M</span><div class="stat-label">Avg. annual ownership cost</div></div>
+    <div class="stat"><span class="stat-number">400hrs</span><div class="stat-label">Fractional vs. full break-even</div></div>
+    <div class="stat"><span class="stat-number">10+</span><div class="stat-label">Finance topics covered</div></div>
+  </div>
+</div>
+
+<!-- ══ MAIN CONTENT ══ -->
+<div class="content-wrap">
+  <div class="content-grid">
+
+    <!-- ARTICLES -->
+    <main>
+      <div class="section-header">
+        <h2>Latest Articles</h2>
+        <a href="https://finaviation.com/articles">View All →</a>
+      </div>
+
+      <!-- Featured card -->
+      <a href="https://finaviation.com/private-jet-ownership-cost" class="card-featured">
+        <img class="card-featured-img" src="https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=700&q=80&fit=crop" alt="Private jet on airport tarmac"/>
+        <div class="card-featured-body">
+          <span class="card-tag">Aircraft Ownership</span>
+          <h3><a href="https://finaviation.com/private-jet-ownership-cost">The True Cost of Owning a Private Jet</a></h3>
+          <p>A rigorous financial breakdown — from acquisition and crew costs to fuel burn rates and maintenance programs. What first-time buyers are almost never told.</p>
+          <div class="card-meta">March 11, 2026 &nbsp;·&nbsp; 9 min read</div>
+        </div>
+      </a>
+
+      <!-- Row articles (placeholders for future content) -->
+      <div class="articles-list">
+
+        <div class="card-row">
+          <img class="card-row-img" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80&fit=crop" alt="Aircraft engines"/>
+          <div class="card-row-body">
+            <span class="card-tag" style="font-size:9px;">Aviation Investing</span>
+            <h3><a href="#">Fractional Jet Ownership: Is NetJets Worth It in 2026?</a></h3>
+            <p style="font-size:0.86rem;">A cost-per-hour comparison of the top fractional programmes versus full ownership and jet card alternatives.</p>
+            <div class="card-row-meta">Coming Soon &nbsp;·&nbsp; 7 min read</div>
+          </div>
+        </div>
+
+        <div class="card-row">
+          <img class="card-row-img" src="https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=400&q=80&fit=crop" alt="Private jet interior"/>
+          <div class="card-row-body">
+            <span class="card-tag" style="font-size:9px;">Jet Cards</span>
+            <h3><a href="#">Jet Cards vs. On-Demand Charter: Which Saves You More?</a></h3>
+            <p style="font-size:0.86rem;">We break down the pricing structures, hidden fees, and fine print that determine which option wins for different flying profiles.</p>
+            <div class="card-row-meta">Coming Soon &nbsp;·&nbsp; 6 min read</div>
+          </div>
+        </div>
+
+        <!-- Mid-content ad -->
+        <div style="padding: 24px 0;">
+          <div class="ad-slot" style="min-height:96px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div class="ad-size">Google AdSense — Leaderboard 728 × 90</div>
+            <code>&lt;ins class="adsbygoogle" data-ad-slot="XXXXXXXX"&gt;&lt;/ins&gt;</code>
+          </div>
+        </div>
+
+        <div class="card-row">
+          <img class="card-row-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&q=80&fit=crop" alt="Private jet in flight"/>
+          <div class="card-row-body">
+            <span class="card-tag" style="font-size:9px;">Airline Finance</span>
+            <h3><a href="#">How Airlines Hedge Fuel Costs — And What It Means for Investors</a></h3>
+            <p style="font-size:0.86rem;">Fuel hedging can make or break an airline's quarterly results. Here's how it works and how to read it in financial statements.</p>
+            <div class="card-row-meta">Coming Soon &nbsp;·&nbsp; 8 min read</div>
+          </div>
+        </div>
+
+        <div class="card-row">
+          <img class="card-row-img" src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=400&q=80&fit=crop" alt="Aircraft above clouds"/>
+          <div class="card-row-body">
+            <span class="card-tag" style="font-size:9px;">Tax & Ownership</span>
+            <h3><a href="#">The Hidden Tax Benefits of Business Aircraft Ownership in Canada</a></h3>
+            <p style="font-size:0.86rem;">CCA deductions, operating cost write-offs, and GST/HST recovery — what Canadian business owners need to understand.</p>
+            <div class="card-row-meta">Coming Soon &nbsp;·&nbsp; 7 min read</div>
+          </div>
+        </div>
+
+        <div class="card-row">
+          <img class="card-row-img" src="https://images.unsplash.com/photo-1507812984078-917a274065be?w=400&q=80&fit=crop" alt="Jet flying at sunset"/>
+          <div class="card-row-body">
+            <span class="card-tag" style="font-size:9px;">Aviation Stocks</span>
+            <h3><a href="#">Aviation Stocks: How to Build Exposure to Private Air Travel</a></h3>
+            <p style="font-size:0.86rem;">From manufacturers to MRO providers — a guide to the publicly traded companies shaping the private aviation industry.</p>
+            <div class="card-row-meta">Coming Soon &nbsp;·&nbsp; 10 min read</div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Sidebar Ad 300x250 -->
+      <div class="sidebar-ad">
+        <div class="ad-size">Google AdSense<br/>300 × 250</div>
+        <code>&lt;ins class="adsbygoogle"<br/>data-ad-slot="XXXXXXXX"&gt;&lt;/ins&gt;</code>
+      </div>
+
+      <!-- Trending -->
+      <div class="sidebar-widget">
+        <div class="sidebar-widget-title">Trending</div>
+        <div class="trending-item">
+          <span class="trending-num">01</span>
+          <div>
+            <div class="trending-title"><a href="https://finaviation.com/private-jet-ownership-cost">The True Cost of Owning a Private Jet</a></div>
+            <span class="trending-tag">Aircraft Ownership</span>
+          </div>
+        </div>
+        <div class="trending-item">
+          <span class="trending-num">02</span>
+          <div>
+            <div class="trending-title"><a href="#">Fractional Jet Ownership: Is NetJets Worth It?</a></div>
+            <span class="trending-tag">Aviation Investing</span>
+          </div>
+        </div>
+        <div class="trending-item">
+          <span class="trending-num">03</span>
+          <div>
+            <div class="trending-title"><a href="#">Jet Cards vs. On-Demand Charter</a></div>
+            <span class="trending-tag">Jet Cards</span>
+          </div>
+        </div>
+        <div class="trending-item">
+          <span class="trending-num">04</span>
+          <div>
+            <div class="trending-title"><a href="#">How Airlines Hedge Fuel Costs</a></div>
+            <span class="trending-tag">Airline Finance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Ad 300x600 -->
+      <div class="sidebar-ad" style="min-height:600px;">
+        <div class="ad-size">Google AdSense<br/>Half Page 300 × 600</div>
+        <code>&lt;ins class="adsbygoogle"<br/>data-ad-slot="XXXXXXXX"&gt;&lt;/ins&gt;</code>
+      </div>
+
+      <!-- About blurb -->
+      <div class="sidebar-widget">
+        <div class="sidebar-widget-title">About FinAviation</div>
+        <p style="font-size:0.88rem; color:var(--muted); line-height:1.7;">Independent finance and aviation intelligence. No sponsored posts. No fluff. Just rigorous analysis for serious readers.</p>
+        <a href="https://finaviation.com/about" style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-top:10px; display:inline-block;">Learn More →</a>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- ══ CATEGORIES ══ -->
+<section class="categories-section">
+  <div class="categories-inner">
+    <div class="section-header">
+      <h2>Browse by Topic</h2>
+      <a href="https://finaviation.com/articles" style="color:var(--gold-light);">All Articles →</a>
+    </div>
+    <div class="cat-grid">
+      <a href="#" class="cat-card">
+        <div class="cat-card-bg" style="background-image:url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=500&q=70&fit=crop');"></div>
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-content">
+          <span class="cat-icon">✈️</span>
+          <h3>Aircraft Ownership</h3>
+          <span>1 Article</span>
+        </div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-card-bg" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=70&fit=crop');"></div>
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-content">
+          <span class="cat-icon">📈</span>
+          <h3>Aviation Investing</h3>
+          <span>Coming Soon</span>
+        </div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-card-bg" style="background-image:url('https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=500&q=70&fit=crop');"></div>
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-content">
+          <span class="cat-icon">🏦</span>
+          <h3>Airline Finance</h3>
+          <span>Coming Soon</span>
+        </div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-card-bg" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500&q=70&fit=crop');"></div>
+        <div class="cat-card-overlay"></div>
+        <div class="cat-card-content">
+          <span class="cat-icon">🧭</span>
+          <h3>Smart Alternatives</h3>
+          <span>Coming Soon</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER ══ -->
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <span class="kicker">Stay Informed</span>
+    <h2>Finance Meets the Skies</h2>
+    <p>Get new articles delivered to your inbox — no spam, no filler. Just clear-eyed aviation finance analysis when it's published.</p>
+    <div class="newsletter-form">
+      <input class="newsletter-input" type="email" id="newsletterEmail" placeholder="your@email.com"/>
+      <button class="newsletter-btn" onclick="handleNewsletter()">Subscribe</button>
+    </div>
+    <p class="newsletter-note">Join our readers. Unsubscribe anytime.</p>
+    <div class="newsletter-success" id="newsletterSuccess">✦ &nbsp; You're subscribed. Welcome to FinAviation.</div>
+  </div>
+</section>
+
+<!-- ══ FOOTER AD ══ -->
+<div style="max-width:800px; margin:0 auto; padding:32px 40px;">
+  <div class="ad-slot" style="min-height:96px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <div class="ad-size">Google AdSense — Footer Leaderboard 728 × 90</div>
+    <code>&lt;ins class="adsbygoogle" data-ad-slot="XXXXXXXX" data-ad-format="auto"&gt;&lt;/ins&gt;</code>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <a href="https://finaviation.com" class="footer-logo">Fin<span>Aviation</span></a>
+  <p class="footer-tagline">Where Finance Meets the Skies</p>
+  <div class="footer-nav">
+    <a href="https://finaviation.com">Home</a>
+    <a href="https://finaviation.com/about">About</a>
+    <a href="https://finaviation.com/articles">Articles</a>
+    <a href="https://finaviation.com/privacy-policy">Privacy Policy</a>
+    <a href="https://finaviation.com/contact">Contact</a>
+  </div>
+  <p>© 2026 <span>FinAviation</span> &nbsp;·&nbsp; Finance &amp; Aviation Intelligence &nbsp;·&nbsp; All rights reserved.</p>
+  <p style="margin-top:8px; font-size:11px; color:#3a3530;">Images from <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> — Free for commercial use.</p>
+</footer>
+
+<script>
+  function handleNewsletter() {
+    const input = document.getElementById('newsletterEmail');
+    const success = document.getElementById('newsletterSuccess');
+    const email = input.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!valid) {
+      input.style.outline = '2px solid #c0392b';
+      input.placeholder = 'Please enter a valid email';
+      return;
+    }
+    input.style.outline = '';
+    document.querySelector('.newsletter-form').style.display = 'none';
+    document.querySelector('.newsletter-note').style.display = 'none';
+    success.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

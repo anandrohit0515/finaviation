@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | FinAviation</title>
+  <meta name="description" content="FinAviation is a finance and aviation intelligence blog covering the real economics of private flight, aircraft ownership, aviation investing, and industry trends."/>
+  <link rel="canonical" href="https://finaviation.com/about"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0f0e0c; --parchment: #f7f3ed; --cream: #faf8f4;
+      --gold: #b8860b; --gold-light: #d4a017; --muted: #6b6560;
+      --rule: #ddd8d0; --accent-bg: #1a1714;
+    }
+    body { background: var(--cream); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-weight: 300; line-height: 1.85; font-size: 18px; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--accent-bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 56px;
+      border-bottom: 1px solid rgba(184,134,11,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #f0ece4;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold-light); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: #8a8278; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--accent-bg);
+      text-align: center;
+      padding: 72px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(184,134,11,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .kicker { font-size: 11px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 20px; display: block; }
+    header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.15; max-width: 700px; margin: 0 auto 20px; color: #f0ece4; }
+    .subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem; color: #a09890; max-width: 560px; margin: 0 auto; }
+
+    /* ── HERO IMAGE ── */
+    .hero-image { width: 100%; height: 420px; object-fit: cover; display: block; object-position: center 60%; }
+    .hero-caption { background: var(--accent-bg); color: #5a5550; font-size: 11px; letter-spacing: 0.1em; text-align: right; padding: 6px 16px; }
+    .hero-caption a { color: #7a7068; text-decoration: none; }
+    .hero-caption a:hover { color: var(--gold-light); }
+
+    /* ── LAYOUT ── */
+    .page-wrap { max-width: 860px; margin: 0 auto; padding: 64px 24px 80px; }
+
+    /* ── MISSION BLOCK ── */
+    .mission {
+      display: grid;
+      grid-template-columns: 3px 1fr;
+      gap: 0 28px;
+      margin-bottom: 64px;
+    }
+    .mission-bar { background: var(--gold); border-radius: 2px; }
+    .mission-text p { font-size: 1.22rem; font-weight: 400; line-height: 1.9; color: #2a2520; margin: 0; }
+
+    /* ── SECTION HEADINGS ── */
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 56px 0 18px;
+      color: var(--ink);
+      position: relative;
+      padding-bottom: 12px;
+    }
+    h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 48px; height: 2px; background: var(--gold); }
+
+    p { margin-bottom: 1.6em; color: #2c2820; }
+
+    /* ── PILLARS ── */
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0 48px; }
+    .pillar {
+      background: var(--accent-bg);
+      border-radius: 3px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pillar::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+    .pillar-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+    .pillar h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: #f0ece4; margin-bottom: 8px; }
+    .pillar p { font-size: 0.9rem; color: #8a8278; margin: 0; line-height: 1.7; }
+
+    /* ── TEAM / AUTHOR ── */
+    .author-card {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      background: var(--parchment);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 32px;
+      margin: 32px 0 48px;
+    }
+    .author-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid var(--gold);
+    }
+    .author-avatar-placeholder {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--accent-bg);
+      border: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+      color: var(--gold-light);
+    }
+    .author-info h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .author-info .role { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+    .author-info p { font-size: 0.95rem; color: #3a342e; margin: 0; line-height: 1.75; }
+
+    /* ── VALUES ── */
+    .values-list { list-style: none; margin: 24px 0 48px; }
+    .values-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .values-list li:last-child { border-bottom: none; }
+    .values-list .v-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .values-list strong { font-family: 'Playfair Display', serif; font-size: 1rem; display: block; color: var(--ink); margin-bottom: 4px; }
+    .values-list span { font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── CONTACT CTA ── */
+    .contact-cta {
+      background: var(--accent-bg);
+      border-radius: 4px;
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 56px;
+    }
+    .contact-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(184,134,11,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-cta h2 { color: #f0ece4; margin-top: 0; }
+    .contact-cta h2::after { left: 50%; transform: translateX(-50%); }
+    .contact-cta p { color: #8a8278; font-size: 1rem; max-width: 480px; margin: 0 auto 28px; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #0f0e0c;
+      font-family: 'Source Serif 4', serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cta-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .contact-email { margin-top: 18px; font-size: 13px; color: #6a6460; }
+    .contact-email a { color: var(--gold-light); text-decoration: none; }
+
+    /* ── ORNAMENT ── */
+    .ornament { text-align: center; color: var(--gold); font-size: 1.4rem; letter-spacing: 0.4em; margin: 48px 0; opacity: 0.7; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--accent-bg); color: #6e6560; text-align: center; padding: 32px 24px; font-size: 12px; letter-spacing: 0.08em; }
+    footer span { color: var(--gold); }
+    footer a { color: var(--gold-light); text-decoration: none; }
+    footer .footer-nav { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+    footer .footer-nav a { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6e6560; text-decoration: none; }
+    footer .footer-nav a:hover { color: var(--gold-light); }
+
+    hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 48px 0; }
+
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .hero-image { height: 240px; }
+      .pillars { grid-template-columns: 1fr; }
+      .author-card { flex-direction: column; align-items: center; text-align: center; }
+      .contact-cta { padding: 36px 24px; }
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="https://finaviation.com" class="nav-logo">Fin<span>Aviation</span></a>
+  <ul class="nav-links">
+    <li><a href="https://finaviation.com">Home</a></li>
+    <li><a href="https://finaviation.com/about" class="active">About</a></li>
+    <li><a href="https://finaviation.com/articles">Articles</a></li>
+    <li><a href="https://finaviation.com/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HEADER ── -->
+<header>
+  <span class="kicker">Who We Are</span>
+  <h1>Where Finance Meets the Skies</h1>
+  <p class="subtitle">Rigorous, independent analysis at the intersection of aviation and personal finance</p>
+</header>
+
+<!-- ── HERO IMAGE ── -->
+<img
+  class="hero-image"
+  src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=1400&q=80&fit=crop"
+  alt="Aerial view of aircraft flying above clouds"
+  loading="lazy"
+/>
+<div class="hero-caption">
+  Photo by <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> — Free to use
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<div class="page-wrap">
+
+  <!-- MISSION -->
+  <div class="mission">
+    <div class="mission-bar"></div>
+    <div class="mission-text">
+      <p>FinAviation was founded on a simple observation: the aviation industry is full of financial decisions — and almost no one is writing about them clearly. We exist to change that. Our mission is to deliver honest, data-driven analysis on the economics of private flight, aviation investing, and the business of air travel — written for people who take their finances as seriously as they take their flying.</p>
+    </div>
+  </div>
+
+  <!-- PILLARS -->
+  <h2>What We Cover</h2>
+  <p>FinAviation sits at a unique crossroads. We are not a lifestyle blog, and we are not a trade publication. We are a finance-first editorial platform with aviation as our lens.</p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <span class="pillar-icon">✈️</span>
+      <h3>Aircraft Ownership</h3>
+      <p>The real economics of buying, operating, and exiting private jets — from light aircraft to ultra-long-range cabin jets.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-icon">📈</span>
+      <h3>Aviation Investing</h3>
+      <p>Stocks, ETFs, leasing companies, and infrastructure plays — how to build exposure to the aviation sector intelligently.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-icon">🏦</span>
+      <h3>Industry Finance</h3>
+      <p>Airline balance sheets, fuel hedging, fleet financing, and the macroeconomic forces shaping commercial aviation.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-icon">🧭</span>
+      <h3>Smart Alternatives</h3>
+      <p>Fractional ownership, jet cards, and charter economics — rigorous comparisons to help you fly smarter, not just more.</p>
+    </div>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- TEAM -->
+  <h2>The Team Behind FinAviation</h2>
+  <p>FinAviation is written and edited by a team of finance professionals and aviation enthusiasts who believe that better information leads to better decisions — in the air and on the ground.</p>
+
+  <div class="author-card">
+    <div class="author-avatar-placeholder">✦</div>
+    <div class="author-info">
+      <h3>The FinAviation Editorial Team</h3>
+      <span class="role">Finance &amp; Aviation Analysts</span>
+      <p>Our contributors bring backgrounds in corporate finance, investment analysis, and commercial aviation. Every article published on FinAviation is researched independently, written with analytical rigour, and reviewed for accuracy before publication. We have no paid partnerships with aircraft manufacturers, charter operators, or financial institutions — our only obligation is to our readers.</p>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <h2>Our Editorial Values</h2>
+
+  <ul class="values-list">
+    <li>
+      <span class="v-icon">🔍</span>
+      <div>
+        <strong>Independence</strong>
+        <span>We accept no sponsored content, paid placements, or affiliate arrangements that influence our editorial positions. Every opinion expressed on FinAviation is our own.</span>
+      </div>
+    </li>
+    <li>
+      <span class="v-icon">📊</span>
+      <div>
+        <strong>Data-Driven Analysis</strong>
+        <span>We cite our sources, show our working, and present cost figures as estimates with appropriate context — not as marketing copy designed to impress.</span>
+      </div>
+    </li>
+    <li>
+      <span class="v-icon">⚖️</span>
+      <div>
+        <strong>Balanced Perspective</strong>
+        <span>Private aviation is not right for everyone. We present the full financial picture — including the cases where owning a jet makes no economic sense.</span>
+      </div>
+    </li>
+    <li>
+      <span class="v-icon">🔄</span>
+      <div>
+        <strong>Accuracy &amp; Updates</strong>
+        <span>Markets change. Fuel prices shift. Tax laws evolve. We review and update our articles regularly to ensure the information remains current and reliable.</span>
+      </div>
+    </li>
+  </ul>
+
+  <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- DISCLAIMER -->
+  <p style="font-size: 0.88rem; color: var(--muted); font-style: italic; text-align: center;">
+    FinAviation publishes general financial and aviation information for educational purposes only. Nothing on this site constitutes financial, legal, or aviation advisory advice. Always consult qualified professionals before making investment or aircraft ownership decisions.
+  </p>
+
+  <!-- CONTACT CTA -->
+  <div class="contact-cta">
+    <h2>Get in Touch</h2>
+    <p>Have a topic suggestion, a question about our methodology, or a story tip? We'd love to hear from you.</p>
+    <a href="/cdn-cgi/l/email-protection#e78f828b8b88a7818e8986918e86938e8889c984888a" class="cta-btn">Send Us a Message</a>
+    <p class="contact-email">Or email us directly at <a href="/cdn-cgi/l/email-protection#adc5c8c1c1c2edcbc4c3ccdbc4ccd9c4c2c383cec2c0"><span class="__cf_email__" data-cfemail="c8a0ada4a4a788aea1a6a9bea1a9bca1a7a6e6aba7a5">[email&#160;protected]</span></a></p>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-nav">
+    <a href="https://finaviation.com">Home</a>
+    <a href="https://finaviation.com/about">About</a>
+    <a href="https://finaviation.com/articles">Articles</a>
+    <a href="https://finaviation.com/privacy-policy">Privacy Policy</a>
+    <a href="https://finaviation.com/contact">Contact</a>
+  </div>
+  <p>© 2026 <span>FinAviation</span> &nbsp;·&nbsp; Finance &amp; Aviation 

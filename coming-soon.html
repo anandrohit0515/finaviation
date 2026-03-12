@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon | FinAviation</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <meta name="description" content="FinAviation is launching soon — finance and aviation intelligence for serious readers."/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0f0e0c; --cream: #faf8f4;
+      --gold: #b8860b; --gold-light: #d4a017;
+      --muted: #6b6560; --rule: #ddd8d0; --accent-bg: #1a1714;
+    }
+
+    body {
+      background: var(--accent-bg);
+      color: #e8e2d9;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background glow */
+    body::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(184,134,11,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Subtle grid texture */
+    body::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(184,134,11,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(184,134,11,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Logo */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f0ece4;
+      letter-spacing: 0.04em;
+      margin-bottom: 56px;
+      display: block;
+    }
+    .logo span { color: var(--gold-light); }
+
+    /* Gold rule */
+    .gold-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+      border-radius: 1px;
+    }
+
+    .kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      color: #f0ece4;
+      margin-bottom: 24px;
+    }
+
+    .tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: #8a8278;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+    }
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .countdown-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #f0ece4;
+      line-height: 1;
+      min-width: 80px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(184,134,11,0.2);
+      border-radius: 4px;
+      padding: 16px 12px;
+      position: relative;
+    }
+    .countdown-number::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 4px 4px 0 0;
+    }
+    .countdown-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #6a6460;
+    }
+
+    /* Divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      color: #3a3530;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(184,134,11,0.2);
+    }
+    .divider span {
+      font-size: 0.9rem;
+      color: #5a5550;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Email form */
+    .email-form {
+      display: flex;
+      gap: 0;
+      max-width: 460px;
+      margin: 0 auto 20px;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid rgba(184,134,11,0.3);
+    }
+    .email-input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: none;
+      outline: none;
+      padding: 14px 18px;
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      color: #e8e2d9;
+      font-weight: 300;
+    }
+    .email-input::placeholder { color: #5a5550; }
+    .email-btn {
+      background: var(--gold);
+      border: none;
+      padding: 14px 24px;
+      font-family: 'Source Serif 4', serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #0f0e0c;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .email-btn:hover { background: var(--gold-light); }
+
+    .form-note {
+      font-size: 11px;
+      color: #4a4540;
+      letter-spacing: 0.05em;
+    }
+
+    /* Topics preview */
+    .topics {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 52px;
+    }
+    .topic-tag {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #6a6460;
+      border: 1px solid rgba(184,134,11,0.15);
+      border-radius: 2px;
+      padding: 6px 12px;
+    }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 64px;
+      font-size: 11px;
+      color: #3a3530;
+      letter-spacing: 0.08em;
+    }
+    .page-footer a { color: #5a5550; text-decoration: none; }
+    .page-footer a:hover { color: var(--gold-light); }
+
+    /* Success message */
+    .success-msg {
+      display: none;
+      background: rgba(184,134,11,0.1);
+      border: 1px solid rgba(184,134,11,0.3);
+      border-radius: 3px;
+      padding: 14px 20px;
+      color: var(--gold-light);
+      font-size: 0.95rem;
+      margin-top: 12px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 500px) {
+      .countdown-number { font-size: 2.2rem; min-width: 60px; padding: 12px 8px; }
+      .email-form { flex-direction: column; border-radius: 3px; }
+      .email-btn { border-radius: 0; }
+      h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <span class="logo">Fin<span>Aviation</span></span>
+
+  <div class="gold-rule"></div>
+  <span class="kicker">Launching Soon</span>
+
+  <h1>Something Big Is Coming</h1>
+  <p class="tagline">Finance and aviation intelligence — rigorously researched,<br/>clearly written, built for serious readers.</p>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown">
+    <div class="countdown-unit">
+      <div class="countdown-number" id="days">00</div>
+      <div class="countdown-label">Days</div>
+    </div>
+    <div class="countdown-unit">
+      <div class="countdown-number" id="hours">00</div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="countdown-unit">
+      <div class="countdown-number" id="minutes">00</div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-unit">
+      <div class="countdown-number" id="seconds">00</div>
+      <div class="countdown-label">Seconds</div>
+    </div>
+  </div>
+
+  <div class="divider"><span>Be the first to know</span></div>
+
+  <!-- EMAIL SIGNUP -->
+  <div class="email-form">
+    <input class="email-input" type="email" id="emailInput" placeholder="Enter your email address"/>
+    <button class="email-btn" onclick="handleSignup()">Notify Me</button>
+  </div>
+  <p class="form-note">No spam. No fluff. Just smart aviation finance — delivered at launch.</p>
+  <div class="success-msg" id="successMsg">✦ &nbsp; You're on the list. We'll be in touch at launch.</div>
+
+  <!-- TOPIC TAGS -->
+  <div class="topics">
+    <span class="topic-tag">Private Jet Ownership</span>
+    <span class="topic-tag">Aviation Investing</span>
+    <span class="topic-tag">Fractional Ownership</span>
+    <span class="topic-tag">Airline Finance</span>
+    <span class="topic-tag">Jet Cards</span>
+    <span class="topic-tag">Aircraft Depreciation</span>
+  </div>
+
+  <div class="page-footer">
+    <p>© 2026 <a href="https://finaviation.com">FinAviation</a> &nbsp;·&nbsp;
+    <a href="https://finaviation.com/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="/cdn-cgi/l/email-protection#4a222f2626250a2c23242b3c232b3e23252464292527"><span class="__cf_email__" data-cfemail="375f525b5b5877515e5956415e56435e58591954585a">[email&#160;protected]</span></a></p>
+  </div>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Countdown to launch date — set your target date here
+  const launchDate = new Date('2026-06-01T00:00:00');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = launchDate - now;
+
+    if (diff <= 0) {
+      document.getElementById('days').textContent = '00';
+      document.getElementById('hours').textContent = '00';
+      document.getElementById('minutes').textContent = '00';
+      document.getElementById('seconds').textContent = '00';
+      return;
+    }
+
+    const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent    = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent   = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Email signup handler
+  function handleSignup() {
+    const input = document.getElementById('emailInput');
+    const success = document.getElementById('successMsg');
+    const email = input.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!valid) {
+      input.style.borderBottom = '2px solid #c0392b';

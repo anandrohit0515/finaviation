@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy | FinAviation</title>
+  <meta name="description" content="FinAviation's Privacy Policy — how we collect, use, and protect your data."/>
+  <link rel="canonical" href="https://finaviation.com/privacy-policy"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0f0e0c; --parchment: #f7f3ed; --cream: #faf8f4;
+      --gold: #b8860b; --gold-light: #d4a017; --muted: #6b6560;
+      --rule: #ddd8d0; --accent-bg: #1a1714;
+    }
+    body { background: var(--cream); color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-weight: 300; line-height: 1.85; font-size: 18px; }
+
+    /* NAV */
+    nav { background: var(--accent-bg); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 56px; border-bottom: 1px solid rgba(184,134,11,0.2); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: #f0ece4; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--gold-light); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: #8a8278; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* HEADER */
+    header { background: var(--accent-bg); text-align: center; padding: 64px 24px 52px; position: relative; overflow: hidden; }
+    header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(184,134,11,0.15) 0%, transparent 70%); pointer-events: none; }
+    .kicker { font-size: 11px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 18px; display: block; }
+    header h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #f0ece4; margin-bottom: 16px; }
+    .last-updated { font-size: 12px; letter-spacing: 0.12em; color: #5a5550; text-transform: uppercase; }
+
+    /* LAYOUT */
+    .page-wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+
+    /* TOC */
+    .toc {
+      background: var(--parchment);
+      border: 1px solid var(--rule);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 4px 4px 0;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+    .toc-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 8px; }
+    .toc a { font-size: 0.95rem; color: #3a342e; text-decoration: none; transition: color 0.2s; }
+    .toc a:hover { color: var(--gold); }
+
+    /* SECTION */
+    .policy-section { margin-bottom: 48px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 700; margin-bottom: 16px; color: var(--ink); position: relative; padding-bottom: 12px; scroll-margin-top: 80px; }
+    h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--gold); }
+    p { margin-bottom: 1.4em; color: #2c2820; font-size: 0.97rem; }
+    ul, ol { padding-left: 24px; margin-bottom: 1.4em; }
+    li { margin-bottom: 8px; color: #2c2820; font-size: 0.97rem; line-height: 1.75; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-light); text-decoration: underline; }
+
+    /* INFO BOX */
+    .info-box { background: var(--parchment); border: 1px solid var(--rule); border-radius: 4px; padding: 20px 24px; margin: 24px 0; }
+    .info-box p { margin: 0; font-size: 0.92rem; color: #3a342e; }
+    .info-box strong { color: var(--ink); }
+
+    hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 48px 0; }
+
+    /* FOOTER */
+    footer { background: var(--accent-bg); color: #6e6560; text-align: center; padding: 32px 24px; font-size: 12px; letter-spacing: 0.08em; }
+    footer span { color: var(--gold); }
+    footer a { color: var(--gold-light); text-decoration: none; }
+    .footer-nav { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-nav a { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6e6560; text-decoration: none; }
+    .footer-nav a:hover { color: var(--gold-light); }
+
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      nav { padding: 0 16px; }
+      .nav-links { gap: 16px; }
+      .toc { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://finaviation.com" class="nav-logo">Fin<span>Aviation</span></a>
+  <ul class="nav-links">
+    <li><a href="https://finaviation.com">Home</a></li>
+    <li><a href="https://finaviation.com/about">About</a></li>
+    <li><a href="https://finaviation.com/articles">Articles</a></li>
+    <li><a href="https://finaviation.com/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <span class="kicker">Legal</span>
+  <h1>Privacy Policy</h1>
+  <p class="last-updated">Last Updated: March 11, 2026</p>
+</header>
+
+<!-- CONTENT -->
+<div class="page-wrap">
+
+  <div class="info-box">
+    <p><strong>Plain English summary:</strong> FinAviation collects minimal data. We use Google AdSense to display ads, which may use cookies. We do not sell your personal information to anyone, ever. Read on for the full details.</p>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ol>
+      <li><a href="#who-we-are">Who We Are</a></li>
+      <li><a href="#information-we-collect">Information We Collect</a></li>
+      <li><a href="#how-we-use-information">How We Use Your Information</a></li>
+      <li><a href="#cookies">Cookies &amp; Tracking Technologies</a></li>
+      <li><a href="#google-adsense">Google AdSense &amp; Third-Party Advertising</a></li>
+      <li><a href="#third-party-links">Third-Party Links</a></li>
+      <li><a href="#data-retention">Data Retention</a></li>
+      <li><a href="#your-rights">Your Rights</a></li>
+      <li><a href="#childrens-privacy">Children's Privacy</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <div class="policy-section" id="who-we-are">
+    <h2>1. Who We Are</h2>
+    <p>FinAviation ("we," "us," or "our") operates the website located at <a href="https://finaviation.com">https://finaviation.com</a>. We publish editorial content covering the intersection of personal finance and aviation, including articles on aircraft ownership costs, aviation investing, and related topics.</p>
+    <p>For any privacy-related questions, you may contact us at: <a href="/cdn-cgi/l/email-protection#553d3039393a15333c3b34233c34213c3a3b7b363a38"><span class="__cf_email__" data-cfemail="89e1ece5e5e6c9efe0e7e8ffe0e8fde0e6e7a7eae6e4">[email&#160;protected]</span></a></p>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- 2 -->
+  <div class="policy-section" id="information-we-collect">
+    <h2>2. Information We Collect</h2>
+    <p>We collect two types of information:</p>
+    <p><strong>Information you provide directly:</strong></p>
+    <ul>
+      <li>Email address, if you sign up for our newsletter or launch notification list</li>
+      <li>Any information you include when contacting us via email</li>
+    </ul>
+    <p><strong>Information collected automatically:</strong></p>
+    <ul>
+      <li>IP address and general geographic location (country/region level)</li>
+      <li>Browser type and version</li>
+      <li>Pages visited and time spent on each page</li>
+      <li>Referring website (how you found us)</li>
+      <li>Device type (desktop, mobile, tablet)</li>
+    </ul>
+    <p>This automatically collected data is gathered via cookies and standard web analytics tools (see Section 4).</p>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- 3 -->
+  <div class="policy-section" id="how-we-use-information">
+    <h2>3. How We Use Your Information</h2>
+    <p>We use the information we collect to:</p>
+    <ul>
+      <li>Operate and improve the FinAviation website and its content</li>
+      <li>Send launch notifications or newsletters to subscribers who opt in</li>
+      <li>Respond to your enquiries or messages</li>
+      <li>Understand how visitors use the site so we can improve it</li>
+      <li>Display relevant advertisements via Google AdSense</li>
+      <li>Comply with applicable legal obligations</li>
+    </ul>
+    <p>We do <strong>not</strong> sell, rent, trade, or otherwise transfer your personal information to third parties for their own marketing purposes.</p>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- 4 -->
+  <div class="policy-section" id="cookies">
+    <h2>4. Cookies &amp; Tracking Technologies</h2>
+    <p>Cookies are small text files stored on your device when you visit a website. FinAviation uses the following types of cookies:</p>
+    <ul>
+      <li><strong>Essential cookies:</strong> Required for the website to function properly. These cannot be disabled.</li>
+      <li><strong>Analytics cookies:</strong> Help us understand visitor behaviour (e.g., Google Analytics). These are anonymous and aggregated.</li>
+      <li><strong>Advertising cookies:</strong> Used by Google AdSense to serve relevant advertisements based on your browsing history. These are third-party cookies controlled by Google.</li>
+    </ul>
+    <p>You can control or disable cookies through your browser settings. Note that disabling certain cookies may affect website functionality or the relevance of ads shown to you.</p>
+    <p>For more information on managing cookies, visit <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener">allaboutcookies.org</a>.</p>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- 5 -->
+  <div class="policy-section" id="google-adsense">
+    <h2>5. Google AdSense &amp; Third-Party Advertising</h2>
+    <p>FinAviation participates in the Google AdSense program to display advertisements. Google, as a third-party vendor, uses cookies (including the DoubleClick cookie) to serve ads based on your prior visits to this and other websites.</p>
+
+    <div class="info-box">
+      <p><strong>What this means for you:</strong> Google may use information about your visits to this and other websites to provide advertisements about goods and services of interest to you. This is called interest-based advertising.</p>
+    </div>
+
+    <p>You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google's Ads Settings</a>, or by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">aboutads.info</a>.</p>
+    <p>FinAviation has no access to or control over the cookies used by Google or other third-party advertisers. Google's use of advertising cookies is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+    <p>We comply with Google AdSense programme policies, including requirements around privacy disclosure and user consent where applicable.</p>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- 6 -->
+  <div class="policy-section" id="third-party-links">
+    <h2>6. Third-Party Links</h2>
+    <p>Our articles may contain links to third-party websites, including financial services providers, aviation companies, and news sources. These links are provided for reference and informational purposes only.</p>
+    <p>FinAviation has no control over the content, privacy practices, or policies of third-party websites. We are not responsible for the privacy practices of any site we link to. We encourage you to review the privacy policy of any website you visit.</p>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- 7 -->
+  <div class="policy-section" id="data-retention">
+    <h2>7. Data Retention</h2>
+    <p>We retain personal data only for as long as necessary to fulfil the purposes described in this policy:</p>
+    <ul>
+      <li><strong>Email subscribers:</strong> Your email is retained until you unsubscribe. Every email we send will include an unsubscribe link.</li>
+      <li><strong>Contact enquiries:</strong> Correspondence is retained for up to 24 months for reference purposes.</li>
+      <li><strong>Analytics data:</strong> Aggregated and anonymised — retained per the default Google Analytics retention period (26 months).</li>
+    </ul>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- 8 -->
+  <div class="policy-section" id="your-rights">
+    <h2>8. Your Rights</h2>
+    <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Right to access:</strong> Request a copy of personal data we hold about you</li>
+      <li><strong>Right to rectification:</strong> Request correction of inaccurate data</li>
+      <li><strong>Right to erasure:</strong> Request deletion of your personal data</li>
+      <li><strong>Right to object:</strong> Object to processing of your data for certain purposes</li>
+      <li><strong>Right to withdraw consent:</strong> Withdraw consent at any time where processing is based on consent (e.g., email newsletter)</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us at <a href="/cdn-cgi/l/email-protection#640c0108080b24020d0a05120d05100d0b0a4a070b09"><span class="__cf_email__" data-cfemail="99f1fcf5f5f6d9fff0f7f8eff0f8edf0f6f7b7faf6f4">[email&#160;protected]</span></a>. We will respond within 30 days.</p>
+    <p>If you are located in the European Economic Area (EEA) or United Kingdom, you also have the right to lodge a complaint with your local data protection authority.</p>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- 9 -->
+  <div class="policy-section" id="childrens-privacy">
+    <h2>9. Children's Privacy</h2>
+    <p>FinAviation is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, please contact us immediately at <a href="/cdn-cgi/l/email-protection#ed8588818182ad8b84838c9b848c99848283c38e8280"><span class="__cf_email__" data-cfemail="e088858c8c8fa086898e8196898194898f8ece838f8d">[email&#160;protected]</span></a> and we will take steps to delete such information.</p>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- 10 -->
+  <div class="policy-section" id="changes">
+    <h2>10. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. When we make material changes, we will update the "Last Updated" date at the top of this page.</p>
+    <p>We encourage you to review this policy periodically. Continued use of the FinAviation website following any changes constitutes your acceptance of the updated policy.</p>
+  </div>
+
+  <hr class="section-rule"/>
+
+  <!-- 11 -->
+  <div class="policy-section" id="contact">
+    <h2>11. Contact Us</h2>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us:</p>
+    <div class="info-box">
+      <p>
+        <strong>FinAviation</strong><br/>
+        Email: <a href="/cdn-cgi/l/email-protection#0a626f6666654a6c63646b7c636b7e63656424696567"><span class="__cf_email__" data-cfemail="224a474e4e4d62444b4c43544b43564b4d4c0c414d4f">[email&#160;protected]</span></a><br/>
+        Website: <a href="https://finaviation.com">https://finaviation.com</a>
+      </p>
+    </div>
+    <p>We aim to respond to all privacy-related enquiries within 5 business days.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-nav">
+   
